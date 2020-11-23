@@ -49,6 +49,10 @@
                       <input type="text" required name="product_name" id="product_name" class="form-control form-control-sm" value="" placeholder="Ürün adı giriniz...">
                     </div>
                     <div class="form-group">
+                      <label for="product_description">Ürün Açıklaması *</label>
+                      <input type="text" required name="product_description" id="product_description" class="form-control form-control-sm" value="" placeholder="Ürün açıklaması giriniz...">
+                    </div>
+                    <div class="form-group">
                       <label for="product_unit_name">Ürün Birimi *</label>
                       <select class="form-control form-control-sm" name="product_unit_name" id="product_unit_name">
                         <option value="">-Ürün Birimi Seçiniz-</option>

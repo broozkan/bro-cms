@@ -8,7 +8,7 @@
 
    require $_SERVER["DOCUMENT_ROOT"]."/cms-admin/classes/Product.php";
 
-   $product = new Product($data["product_name"], $data["product_unit_name"], $data["product_price"], $data["product_availability"]);
+   $product = new Product($data["product_name"], $data["product_description"], $data["product_unit_name"], $data["product_price"], $data["product_availability"]);
 
 
    $response = $product->save();
@@ -36,7 +36,7 @@
 
    require $_SERVER["DOCUMENT_ROOT"]."/cms-admin/classes/Product.php";
 
-   $product = new Product($data["product_name"], $data["product_unit_name"], $data["product_price"], $data["product_availability"]);
+   $product = new Product($data["product_name"], $data["product_description"], $data["product_unit_name"], $data["product_price"], $data["product_availability"]);
    $product->setProductId($data["product_id"]);
 
    $response = $product->update();

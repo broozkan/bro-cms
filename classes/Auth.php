@@ -9,7 +9,7 @@ class Auth
 
   function __construct()
   {
-    session_start();
+    @session_start();
 
     if (!isset($_SESSION["user"])) {
       $this->is_logged_in = false;

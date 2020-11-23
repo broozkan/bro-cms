@@ -13,9 +13,17 @@ $(document).ready(function () {
 
         $("#product_id").val(data.responseData["product_id"]);
         $("#product_name").val(data.responseData["product_name"]);
+        $("#product_description").val(data.responseData["product_description"]);
         $("#product_unit_name").val(data.responseData["product_unit_name"]);
         $("#product_price").val(data.responseData["product_price"]);
         $("#product_availability").val(data.responseData["product_availability"]);
+
+        for (var i = 0; i < data.responseData["product_files"].length; i++) {
+          let html = '<div class="col-lg-3">';
+          html += '<img class="img img-fluid w-100 h-50" src="/cms-admin/img/products/'+data.responseData["product_files"][i]["file_name"]+'"/>';
+          html += '</div>';
+          $("#product-files").append(html);
+        }
 
       }}
     );
@@ -140,9 +148,9 @@ $(document).ready(function () {
     e.preventDefault();
     let isProductSaved = false;
 
-    let product_id;
     let formValues = $(this).serializeJSON();
     let json = JSON.stringify(formValues);
+    let product_id = formValues["product_id"];
 
     $.ajax({
       url: "/cms-admin/controllers/Product.php",
@@ -155,7 +163,6 @@ $(document).ready(function () {
         if (data.response) {
           alert("Ürün düzenlendi!");
           isProductSaved = true;
-          product_id = data.responseData;
 
         }else {
           isProductSaved = false;
@@ -167,11 +174,23 @@ $(document).ready(function () {
     );
 
     if (isProductSaved) {
+
+      let shouldOtherPicturesDelete = "0";
+
+      if($('#product_images')[0].files.length < 1){
+        location.reload();
+        return false;
+      }else {
+        shouldOtherPicturesDelete="1";
+      }
+
+
       let formData = new FormData();
 
       for (var i = 0; i < $('#product_images')[0].files.length; i++) {
         formData.append('product_images[]', $('#product_images')[0].files[i]);
         formData.append('product', product_id);
+        formData.append('delete-before', shouldOtherPicturesDelete);
       }
 
       $.ajax({

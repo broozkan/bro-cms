@@ -119,6 +119,28 @@ class File extends Model
   }
 
 
+  public function deleteOther($file_product_id='')
+  {
+    parent::__construct();
+
+    $stmt = $this->dbh->prepare("DELETE FROM tbl_files WHERE file_product_id=:file_product_id");
+    $response = $stmt->execute(["file_product_id"=>$file_product_id]);
+
+
+    if ($response == false) {
+      return array(
+        "response"=>false,
+        "responseData"=>$stmt->errorInfo()
+      );
+    }else {
+      return array(
+        "response"=>true,
+        "responseData"=>$response
+      );
+    }
+  }
+
+
 }
 
 

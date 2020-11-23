@@ -50,6 +50,10 @@
                       <input type="text" required name="product_name" id="product_name" class="form-control form-control-sm" value="" placeholder="Ürün adı giriniz...">
                     </div>
                     <div class="form-group">
+                      <label for="product_description">Ürün Açıklaması *</label>
+                      <input type="text" required name="product_description" id="product_description" class="form-control form-control-sm" value="" placeholder="Ürün açıklaması giriniz...">
+                    </div>
+                    <div class="form-group">
                       <label for="product_unit_name">Ürün Birimi *</label>
                       <select class="form-control form-control-sm" name="product_unit_name" id="product_unit_name">
                         <option value="">-Ürün Birimi Seçiniz-</option>
@@ -64,7 +68,7 @@
                     </div>
                     <div class="form-group">
                       <label for="product_images">Ürün Görselleri *</label>
-                      <input type="file" multiple step=".01" required name="product_images" id="product_images" class="form-control form-control-sm" value="" placeholder="Ürün görselleri giriniz...">
+                      <input type="file" multiple step=".01" name="product_images" id="product_images" class="form-control form-control-sm" value="" placeholder="Ürün görselleri giriniz...">
                     </div>
                     <div class="form-group">
                       <label for="product_availability">Ürün Stokta Var Mı? *</label>
@@ -78,6 +82,12 @@
                       <button type="submit" class="btn btn-primary btn-sm" name="button">Kaydet</button>
                     </div>
                   </form>
+                </div>
+                <div class="col-lg-6">
+                  <h4>Ürün Mevcut Görselleri</h4>
+                  <div class="row " id="product-files">
+
+                  </div>
                 </div>
               </div>
 
